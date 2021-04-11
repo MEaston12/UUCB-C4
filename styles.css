@@ -1,3 +1,6 @@
 main {
     height: calc(100% - 4rem);
 }
+#answers button {
+    margin:.25em;
+}

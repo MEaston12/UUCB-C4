@@ -28,12 +28,33 @@
                 </div>
                 <div class='card bg-secondary p-1' id='quiz-card' hidden>
                     <div class='card-body bg-white'>
-                        
+                        <h2 class='card-title'>Question <span id='question-no'>1</span></h2>
+                        <p class='card-text' id='question-q'>This is where the question is supposed to go.  Why isn't it here?</p>
+                        <div id='answers'>
+                            <button class='btn btn-primary w-100'>Answer 1</button>
+                            <button class='btn btn-primary w-100'>Answer 2</button>
+                            <button class='btn btn-primary w-100'>Answer 3</button>
+                            <button class='btn btn-primary w-100'>Answer 4</button>
+                        </div>
                     </div>
                 </div>
                 <div class='card bg-secondary p-1' id='score-card' hidden>
                     <div class='card-body bg-white'>
-                        
+                        <h2 class='card-title'>High Scores</h2>
+                        <table class='table'>
+                            <thead>
+                                <th scope='col'>#</th>
+                                <th scope='col'>Scorer Name</th>
+                                <th scope='col'>Score</th>
+                            </thead>
+                            <tbody id='score-table'>
+                                <tr>
+                                    <th scope='row'>1</th>
+                                    <td>Malcolm Easton</td>
+                                    <td>-20</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
