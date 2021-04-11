@@ -1,12 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Coding Quiz</title>
 </head>
-<body>
-    
+<body class="h-100">
+    <header class="bg-primary text-white p-1 pl-3">
+        <h1>Coding Quiz Time!</h1>
+    </header>
+    <main class="container-fluid">
+        <div class="row pt-3 h-100">
+            <div class="col-2">
+                <button class="btn btn-primary w-100">View High Scores</button>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6 m-auto">
+                <div class="card bg-secondary p-1" id="welcome-card">
+                    <div class="card-body bg-white">
+                        <h2 class="card-title">Welcome to the quiz!</h2>
+                        <p class="card-text">In this quiz, you'll attempt to answer some multiple choice questions.  If you get any questions wrong, you'll lose points equal to the amount of time it took for you to answer the question.  If your points go to zero, the quiz will end early.</p>
+                        <button class="btn btn-secondary">I'm ready!</button>
+                    </div>
+                </div>
+                <div class="card bg-secondary p-1" id="quiz-card" hidden>
+                    <div class="card-body bg-white">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-2">
+                <div class="card w-100">
+                    <div class="card-body p-2 text-center">
+                        <p class='m-0'>Time Left: <span>60</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
 </body>
 </html>
