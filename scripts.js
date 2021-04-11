@@ -63,7 +63,7 @@ function switchCard(newCardStr){ //switches the visible card to a new card
 }
 
 function updateTimeLeft(){
-    $('#time-left').text() = timeLeft;
+    $('#time-left').text(timeLeft);
 }
 
 function swapScoreButtons(){
