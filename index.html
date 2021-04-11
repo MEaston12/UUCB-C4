@@ -15,18 +15,19 @@
     <main class='container-fluid'>
         <div class='row pt-3 h-100'>
             <div class='col-2'>
-                <button class='btn btn-primary w-100'>View High Scores</button>
+                <button class='btn btn-primary w-100' id='view-high-scores'>View High Scores</button>
+                <button class='btn btn-info w-100' id='hide-high-scores' hidden>Return to Game</button>
             </div>
             <div class='col-1'></div>
             <div class='col-6 m-auto'>
-                <div class='card bg-secondary p-1' id='welcome-card'>
+                <div class='main-content card bg-secondary p-1' id='welcome-card'>
                     <div class='card-body bg-white'>
                         <h2 class='card-title'>Welcome to the quiz!</h2>
                         <p class='card-text'>In this quiz, you'll attempt to answer some multiple choice questions.  If you get any questions wrong, you'll lose points equal to the amount of time it took for you to answer the question.  If your points go to zero, the quiz will end early.</p>
                         <button class='btn btn-secondary' id='start-quiz'>I'm ready!</button>
                     </div>
                 </div>
-                <div class='card bg-secondary p-1' id='quiz-card' hidden>
+                <div class='main-content card bg-secondary p-1' id='quiz-card' hidden>
                     <div class='card-body bg-white'>
                         <h2 class='card-title'>Question <span id='question-no'>1</span></h2>
                         <p class='card-text' id='question-q'>This is where the question is supposed to go.  Why isn't it here?</p>
@@ -38,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='card bg-secondary p-1' id='score-card' hidden>
+                <div class='main-content card bg-secondary p-1' id='score-card' hidden>
                     <div class='card-body bg-white'>
                         <h2 class='card-title'>High Scores</h2>
                         <table class='table'>
@@ -57,6 +58,13 @@
                         </table>
                     </div>
                 </div>
+                <div class='main-content card bg-secondary p-1' id='finish-card' hidden>
+                    <div class='card-body bg-white'>
+                        <h2 class='card-title'>Finished!</h2>
+                        <p>You've finished the quiz!</p>
+                        <p>Your score was: <span>0</span></p>
+                    </div>
+                </div>
             </div>
             <div class='col-1'></div>
             <div class='col-2'>
@@ -68,5 +76,7 @@
             </div>
         </div>
     </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./scripts.js"></script>
 </body>
 </html>
