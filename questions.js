@@ -1,3 +1,4 @@
+const questions =
 [
     {
         "question":"This is question 1",
@@ -19,4 +20,4 @@
         ],
         "correctAnswer": 2
     }
-]
+];
