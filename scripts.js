@@ -13,12 +13,13 @@ $('#start-quiz').click(()=>{
     changeQuizCard(0);
 });
 
-$('#answers').find('button').click(()=>{
+$('#answers').find('button').click((e)=>{
     if(currentQuestion + 1 < questions.length){
-        submitAnswer();
+        submitAnswer(+$(e.target).data('answer-num'));
         changeQuizCard(++currentQuestion);
     } else {
         //Need to exit script and finish quiz
+        submitAnswer(+$(e.target).data('answer-num'));
         finishQuiz();
         switchCard('#finish-card');
     }
