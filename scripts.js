@@ -1,29 +1,31 @@
 //magic numbers/vars
-const timerStart = 60;
+const timerStart = 30;
 let timeLeft = timerStart;
 let questionStartTime = nowSec();
 let currentCard = '#welcome-card';
 let lastCard = '';
 let currentQuestion = 0;
 let correctAnswers = 0;
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+if(highScores[0]){renderTable()}
 
 //Button assignments - Should stay relatively clean and refer to functions in the underworkings
-$('#start-quiz').click(()=>{
-    switchCard('#quiz-card');
-    startQuiz();
-    changeQuizCard(0);
-});
+$('#start-quiz').click(startQuiz);
+$('#try-again').click(startQuiz);
 
 $('#answers').find('button').click((e)=>{
+    submitAnswer(+$(e.target).data('answer-num'));
     if(currentQuestion + 1 < questions.length){
-        submitAnswer(+$(e.target).data('answer-num'));
         changeQuizCard(++currentQuestion);
     } else {
         //Need to exit script and finish quiz
-        submitAnswer(+$(e.target).data('answer-num'));
         finishQuiz();
         switchCard('#finish-card');
     }
+});
+
+$('#submit-name').click(()=>{
+    submitName($('#user-name').val());
 });
 
 $('#view-high-scores').click(()=>{
@@ -38,6 +40,9 @@ $('#hide-high-scores').click(()=>{
 
 //Begin underworkings
 function startQuiz(){ //handles the mechanical changes needed to start the quiz
+    switchCard('#quiz-card');
+    currentQuestion = 0;
+    changeQuizCard(currentQuestion);
     timeLeft = timerStart;
     questionStartTime = nowSec();
     $('#correct-popup').attr('hidden','');
@@ -45,7 +50,37 @@ function startQuiz(){ //handles the mechanical changes needed to start the quiz
     updateTimeLeft();
 }
 function finishQuiz(){
-    //
+    if(timeLeft > 0){
+        $('#submittal-form').attr('hidden',null);
+        $('#finish-score').text(timeLeft);
+    } else { //Lost the game, need to show loser screen
+        
+    }
+}
+function submitName(inName){
+    const newEntry = {};
+    newEntry.name = inName;
+    newEntry.score = timeLeft;
+    for(var i = 0; i < highScores.length && highScores[i].score > newEntry.score; i++){} //doing this because I'm evil and it lets me insert the new entry in order automatically
+    highScores.splice(i, 0, newEntry);
+    console.log(`added ${JSON.stringify(highScores)}`);
+    localStorage.setItem('highScores',JSON.stringify(highScores));
+    $('#submittal-form').attr('hidden','');
+    renderTable();
+}
+function renderTable(){
+    const scoreTable = $('#score-table');
+    scoreTable.empty();
+    let i = 1;
+    for(let record of highScores){
+        let rowContent = `
+        <tr>
+            <th scope='row'>${i++}</th>
+            <td>${record.name}</td>
+            <td>${record.score}</td>
+        </tr>`;
+        scoreTable.append(rowContent);
+    }
 }
 function submitAnswer(submittedAnswer){
     //check if answer is correct, if correct add to questions, if wrong remove time taken
@@ -63,7 +98,6 @@ function submitAnswer(submittedAnswer){
     updateTimeLeft();
     questionStartTime = nowSec();
 }
-
 function changeQuizCard(qNum){
     const questionObj = questions[qNum];
     $('#question-num').text(qNum + 1);
@@ -72,18 +106,15 @@ function changeQuizCard(qNum){
         element.textContent = questionObj.answers[i];
     });
 }
-
 function switchCard(newCardStr){ //switches the visible card to a new card
     lastCard = currentCard;
     currentCard = newCardStr;
     $('.main-content').attr('hidden','');
     $(currentCard).attr('hidden',null);
 }
-
 function updateTimeLeft(){
     $('#time-left').text(timeLeft);
 }
-
 function swapScoreButtons(){
     if(currentCard === '#score-card'){ //if score card is active
         $('#hide-high-scores').attr('hidden', null);
@@ -93,7 +124,6 @@ function swapScoreButtons(){
         $('#view-high-scores').attr('hidden', null);
     }
 }
-
 function nowSec(){
     return Math.floor(Date.now()/1000);
 }

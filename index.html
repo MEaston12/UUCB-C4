@@ -62,7 +62,15 @@
                     <div class='card-body bg-white'>
                         <h2 class='card-title'>Finished!</h2>
                         <p>You've finished the quiz!</p>
-                        <p>Your score was: <span>0</span></p>
+                        <p>Your score was: <span id='finish-score'>0</span></p>
+                        <div class='input-group mb-2' id='submittal-form'>
+                            <p>Submit your name if you would like to add it to the high score board!</p>
+                            <div class='input-group-prepend'>
+                                <button class='btn btn-secondary' type='button' id='submit-name'>Submit Name</button>
+                            </div>
+                            <input type='text' class='form-control' placeholder='' id='user-name'>
+                        </div>
+                        <button class='btn btn-primary' id='try-again'>Try Again</button>
                     </div>
                 </div>
             </div>
