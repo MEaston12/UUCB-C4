@@ -8,7 +8,7 @@ const questions =
             "This is the third answer",
             "This is the correct answer"
         ],
-        "correctAnswer": 3
+        "correctAnswer": 4
     },
     {
         "question":"This is question 2",
@@ -18,6 +18,6 @@ const questions =
             "This is the correct answer",
             "This is the third answer"
         ],
-        "correctAnswer": 2
+        "correctAnswer": 3
     }
 ];
