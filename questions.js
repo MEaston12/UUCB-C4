@@ -1,23 +1,33 @@
 const questions =
 [
     {
-        "question":"This is question 1",
+        "question":"What is Javascript?",
         "answers":[
-            "This is the first answer",
-            "This is the second answer",
-            "This is the third answer",
-            "This is the correct answer"
+            "A scripting language originally invented by Mozilla that has since become the de-facto scripting language for all web services",
+            "A scripting variant of Java, the programming language",
+            "A popular coffee restaurant chain where people write screenplays a lot",
+            "All of the above"
         ],
-        "correctAnswer": 4
+        "correctAnswer": 1
     },
     {
-        "question":"This is question 2",
+        "question":"What happens when you use position:absolute?",
         "answers":[
-            "This is the first answer",
-            "This is the second answer",
-            "This is the correct answer",
-            "This is the third answer"
+            "The internet police break down your door and arrest you for using nonresponsive css",
+            "The target elements will start to float",
+            "The target elements will position themselves based on an xy offset from their nearest parent with position:relative or absolute",
+            "All of the above"
         ],
         "correctAnswer": 3
+    },
+    {
+        "question":"What does // do in a JS script?",
+        "answers":[
+            "Integer divide",
+            "It comments out a line, characters written after it will not be executed",
+            "It divides the operators by each other twice in both directions",
+            "Permissive OR for boolean logic"
+        ],
+        "correctAnswer": 2
     }
 ];
