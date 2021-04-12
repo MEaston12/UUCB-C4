@@ -12,6 +12,7 @@ if(highScores[0]){renderTable()}
 //Button assignments - Should stay relatively clean and refer to functions in the underworkings
 $('#start-quiz').click(startQuiz);
 $('#try-again').click(startQuiz);
+$('#try-again-loser').click(startQuiz);
 
 $('#answers').find('button').click((e)=>{
     submitAnswer(+$(e.target).data('answer-num'));
@@ -50,12 +51,8 @@ function startQuiz(){ //handles the mechanical changes needed to start the quiz
     updateTimeLeft();
 }
 function finishQuiz(){
-    if(timeLeft > 0){
-        $('#submittal-form').attr('hidden',null);
-        $('#finish-score').text(timeLeft);
-    } else { //Lost the game, need to show loser screen
-        
-    }
+    $('#submittal-form').attr('hidden',null);
+    $('#finish-score').text(timeLeft);
 }
 function submitName(inName){
     const newEntry = {};
@@ -94,6 +91,9 @@ function submitAnswer(submittedAnswer){
         $('#time-deducted').text(timeDeducted);
         $('#correct-popup').attr('hidden','');
         $('#incorrect-popup').attr('hidden',null);
+        if(timeLeft <= 0){ //we FAIL must destroy
+            switchCard('#loser-card');
+        }
     }
     updateTimeLeft();
     questionStartTime = nowSec();
